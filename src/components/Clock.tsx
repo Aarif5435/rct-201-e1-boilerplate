@@ -1,25 +1,31 @@
 import React from "react";
 
+
 type Props = {
-  //  TODO
+  //   TODO
+  hour : number;
+  minutes : number;
+  seconds : number;
+  lable : string;
 };
 
-const Clock = (props: Props) => {
+const Clock = (props: Props)  => {
+  
   return (
     <div data-testid="clock">
       <h4 data-testid="clock-label">
-        {/* Label */}
+        {props.lable}
       </h4>
       <span data-testid="clock-hours">
-        {/* Hours */}
+        {props.hour}
         </span>
         :
       <span data-testid="clock-minutes">
-        {/* Minutes */}
+        {props.minutes}
       </span>
        :
       <span data-testid="clock-seconds">
-        {/* Seconds */}
+       {props.seconds}
         </span>
     </div>
   );

@@ -1,28 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 
 type List2Props = {
   // TODO
+  Append : Function;
+  Pop : Function;
+  Clear : Function;
+  Rest : Function;
+  lable : string;
+  element : number[];
 };
 const List2 = (props: List2Props) => {
+  const [text, setText] = useState("")
   return (
-    <div data-testid="list2">
-      <h3 data-testid="list2-label">{/* Label */}</h3>
+    <div data-testid="list1">
+      <h3 data-testid="list1-label">{props.lable}</h3>
+      {props.element.map((e)=>`${e} `)}
+      <div data-testid="list1-element">{}</div>
+      
 
-      {/* Iterate List and wrap the element div below inside */}
-      <div data-testid="list2-element">{/* Each element in a list */}</div>
-
-      <input data-testid="list2-input" />
-      <button data-testid="list2-btn-append-end">
-        {/* Button to append new number to the end of the list */}
+      {props.Append(text)}
+      <input data-testid="list1-input" onChange={(e)=> setText(e.target.value)} />
+      <button data-testid="list1-btn-append-start" onClick={props.Append(text)}> 
+        {/* Append to start of list btn */} 
+        append
       </button>
-      <button data-testid="list2-btn-pop-start">
-        {/* Button to  pop first element of the list */}
+      <button data-testid="list1-btn-pop-end" onClick={props.Pop()}>
+        {/* po last element btn */}
+        Pop
       </button>
-      <button data-testid="list2-btn-clear">
-        {/* Button to  clear the list */}
+      <button data-testid="list1-btn-clear" onClick={props.Clear()}>
+        {/* clear list and set empty button */}
+        Clear
       </button>
-      <button data-testid="list2-btn-reset">
-        {/* Button to  reset the list to initialValue */}
+      <button data-testid="list1-btn-reset" onClick={props.Rest()}>
+        {/* Reset list to default value btn */}
+        reset
       </button>
     </div>
   );
